@@ -4,9 +4,21 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:             # ← enables “Run workflow” button
+    inputs:
+      platforms:
+        description: "windows, macos, linux, android or 'all' (comma-separated ok)"
+        required: false
+        default: "all"
+      is_stable:
+        description: "Treat this run as stable? (true/false)"
+        required: false
+        default: "true"
+
+        
 env:
   IS_STABLE: ${{ !contains(github.ref, '-') }}
-  workflow_dispatch:    # ← manually run from the Actions tab
+
 
 jobs:
   build:
