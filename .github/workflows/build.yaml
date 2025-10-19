@@ -6,6 +6,7 @@ on:
       - 'v*'
 env:
   IS_STABLE: ${{ !contains(github.ref, '-') }}
+  workflow_dispatch:    # ← manually run from the Actions tab
 
 jobs:
   build:
